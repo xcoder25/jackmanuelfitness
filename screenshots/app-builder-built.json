@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Jack Manuel Fitness",
+      "hasCanvas": false,
+      "bodyTextLen": 2804,
+      "bodyTextHash": "54ed22115421b52392c3c09885905574e4d3f1b1fd6c8e8b4841bba15370a31a",
+      "bodyTextPrefix": "JACK MANUEL About Programs Clients Book Book a session JACK MANU",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Jack Manuel Fitness",
+      "hasCanvas": false,
+      "bodyTextLen": 2761,
+      "bodyTextHash": "5dd89d35502916029cff6128c279041ced30b1e1524d31beb4f501030aa4c251",
+      "bodyTextPrefix": "JACK MANUEL JACK MANUEL FITNESS LIMITED · LAGOS My strength is m",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}
