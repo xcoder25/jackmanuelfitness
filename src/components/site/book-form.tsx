@@ -19,6 +19,7 @@ export function BookForm() {
   const [note, setNote] = useState("");
   const [error, setError] = useState("");
   const [done, setDone] = useState(false);
+  const [whatsappUrl, setWhatsappUrl] = useState("");
 
   function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -37,25 +38,36 @@ export function BookForm() {
       session,
       note: note.trim(),
     });
+    // Build a pre-filled WhatsApp message so Jack's team receives the lead instantly
+    const lines = [
+      `*New booking request from ${name.trim()}*`,
+      `📋 Session: ${session}`,
+      `📞 Phone: ${phone.trim()}`,
+      email.trim() ? `📧 Email: ${email.trim()}` : "",
+      note.trim() ? `📝 Brief: ${note.trim()}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+    setWhatsappUrl(`https://wa.me/2348030997843?text=${encodeURIComponent(lines)}`);
     setError("");
     setDone(true);
   }
 
   if (done) {
     return (
-      <div className="rounded-xl border border-border bg-elevated p-6 sm:p-8">
-        <div className="flex size-10 items-center justify-center rounded-md bg-accent text-accent-fg">
+      <div className="rounded-xl border border-emerald-500/30 bg-elevated p-6 sm:p-8">
+        <div className="flex size-10 items-center justify-center rounded-md bg-emerald-500/20 text-emerald-400">
           <Check className="size-5" />
         </div>
         <h3 className="mt-4 font-display text-3xl tracking-wide text-fg">Request received</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted">
-          {name}, your {session.toLowerCase()} request is in. WhatsApp the team now to lock a date
-          and rate.
+          {name}, your {session.toLowerCase()} request is logged. Tap below — your details are
+          pre-filled so the team can reply immediately.
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-          <Button asChild>
-            <a href="https://wa.me/2348030997843" target="_blank" rel="noreferrer">
-              Confirm on WhatsApp
+          <Button asChild className="bg-emerald-600 hover:bg-emerald-500 text-white border-0">
+            <a href={whatsappUrl} target="_blank" rel="noreferrer">
+              Send via WhatsApp →
             </a>
           </Button>
           <Button
@@ -67,6 +79,7 @@ export function BookForm() {
               setPhone("");
               setEmail("");
               setNote("");
+              setWhatsappUrl("");
             }}
           >
             New request

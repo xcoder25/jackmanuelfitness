@@ -3,14 +3,16 @@
 @theme {
   --color-bg: #0a0a0b;
   --color-surface: #121214;
-  --color-elevated: #1c1c1e;
+  --color-elevated: #1a1a1d;
   --color-fg: #f2f0eb;
   --color-muted: #9a9890;
   --color-subtle: #6e6c66;
-  --color-border: #2a2a2c;
+  --color-border: #26262a;
+  --color-border-glow: #3f3f46;
   --color-accent: #f2f0eb;
   --color-accent-fg: #0a0a0b;
   --color-line: #3a3a3c;
+  --color-gold: #eab308;
   --font-display: "Bebas Neue", "Arial Narrow", Impact, sans-serif;
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --radius-sm: 0.25rem;
@@ -30,6 +32,7 @@
     background-color: var(--color-bg);
     color: var(--color-fg);
     font-family: var(--font-sans);
+    overflow-x: hidden;
   }
 
   button:not(:disabled),
@@ -48,8 +51,500 @@
   }
 }
 
+/* Kinetic Keyframe Animations */
+@keyframes kenburns {
+  0% {
+    transform: scale(1.02) translate(0%, 0%);
+  }
+  50% {
+    transform: scale(1.08) translate(-1%, -0.5%);
+  }
+  100% {
+    transform: scale(1.02) translate(0%, 0%);
+  }
+}
+
+@keyframes slideProgress {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  100% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* ── 15s Alternating Hero Slideshow (3 slides, 5s per slide) ── */
+@keyframes heroSlide1 {
+  0%, 30% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  33.33%, 96.66% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+}
+
+@keyframes heroSlide2 {
+  0%, 30% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  33.33%, 63.33% {
+    opacity: 0.55;
+    transform: scale(1.02);
+  }
+  66.66%, 100% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes heroSlide3 {
+  0%, 63.33% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  66.66%, 96.66% {
+    opacity: 0.50;
+    transform: scale(1.03);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes heroIndicator1 {
+  0%, 30% {
+    width: 28px;
+    background-color: #eab308;
+  }
+  33.33%, 96.66% {
+    width: 12px;
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+  100% {
+    width: 28px;
+    background-color: #eab308;
+  }
+}
+
+@keyframes heroIndicator2 {
+  0%, 30% {
+    width: 12px;
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+  33.33%, 63.33% {
+    width: 28px;
+    background-color: #eab308;
+  }
+  66.66%, 100% {
+    width: 12px;
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+}
+
+@keyframes heroIndicator3 {
+  0%, 63.33% {
+    width: 12px;
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+  66.66%, 96.66% {
+    width: 28px;
+    background-color: #eab308;
+  }
+  100% {
+    width: 12px;
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+}
+
+.animate-hero-slide-1 {
+  animation: heroSlide1 15s ease-in-out infinite;
+}
+
+.animate-hero-slide-2 {
+  animation: heroSlide2 15s ease-in-out infinite;
+}
+
+.animate-hero-slide-3 {
+  animation: heroSlide3 15s ease-in-out infinite;
+}
+
+.animate-hero-indicator-1 {
+  animation: heroIndicator1 15s ease-in-out infinite;
+}
+
+.animate-hero-indicator-2 {
+  animation: heroIndicator2 15s ease-in-out infinite;
+}
+
+.animate-hero-indicator-3 {
+  animation: heroIndicator3 15s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-15deg);
+  }
+}
+
+@keyframes border-glow-pulse {
+  0%, 100% {
+    border-color: rgba(242, 240, 235, 0.12);
+  }
+  50% {
+    border-color: rgba(242, 240, 235, 0.35);
+  }
+}
+
+@keyframes hero-fade-up {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.hero-animate-1 {
+  animation: hero-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+.hero-animate-2 {
+  animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+.hero-animate-3 {
+  animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+.hero-animate-4 {
+  animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+.hero-animate-5 {
+  animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+}
+
+.animate-kenburns {
+  animation: kenburns 24s ease-in-out infinite alternate;
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-reverse 35s linear infinite;
+}
+
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-border-pulse {
+  animation: border-glow-pulse 3s ease-in-out infinite;
+}
+
+/* Shimmer overlay effect for cards & buttons */
+.shimmer-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.04) 50%,
+    transparent 100%
+  );
+  transform: translateX(-150%) skewX(-20deg);
+  transition: none;
+  pointer-events: none;
+}
+
+.shimmer-card:hover::after {
+  animation: shimmer-sweep 1.2s ease-in-out;
+}
+
+/* Radial Glow Ambient Lights */
+.bg-radial-hero {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(242, 240, 235, 0.08) 0%,
+    rgba(10, 10, 11, 0) 70%
+  );
+}
+
+.bg-radial-coach {
+  background: radial-gradient(
+    circle at 80% 50%,
+    rgba(242, 240, 235, 0.06) 0%,
+    rgba(10, 10, 11, 0) 65%
+  );
+}
+
+/* Athletic Grid Pattern */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* Grain texture overlay */
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* ================================================================
+   MOBILE-FIRST ANIMATION ADDITIONS
+   ================================================================ */
+
+/* ── Tap-active feedback for touch devices ── */
+@media (hover: none) {
+  /* Cards get a tactile press feedback on tap */
+  article:active,
+  .shimmer-card:active {
+    transform: scale(0.97);
+    transition: transform 0.1s ease-out;
+  }
+
+  /* Buttons get a satisfying press-down */
+  button:active,
+  [role="button"]:active,
+  a[href]:active {
+    opacity: 0.75;
+    transform: scale(0.96);
+    transition: transform 0.08s ease-out, opacity 0.08s ease-out;
+  }
+
+  /* Disable hover-only shimmer on touch — prevent sticky states */
+  .shimmer-card:hover::after {
+    animation: none;
+  }
+}
+
+/* ── Mobile hero text — responsive fluid clamp ── */
+@keyframes mobile-hero-pulse {
+  0%, 100% { text-shadow: 0 0 0px transparent; }
+  50% { text-shadow: 0 0 24px rgba(242, 240, 235, 0.12); }
+}
+
+/* ── Slide-up panel for mobile menu ── */
+@keyframes slide-up-mobile {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-menu-item {
+  animation: slide-up-mobile 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* stagger each link */
+.mobile-menu-item:nth-child(1) { animation-delay: 0.04s; }
+.mobile-menu-item:nth-child(2) { animation-delay: 0.08s; }
+.mobile-menu-item:nth-child(3) { animation-delay: 0.12s; }
+.mobile-menu-item:nth-child(4) { animation-delay: 0.16s; }
+.mobile-menu-item:nth-child(5) { animation-delay: 0.20s; }
+
+/* ── Floating badge pulse for coach image ── */
+@keyframes badge-float {
+  0%, 100% { transform: translateY(0px); box-shadow: 0 4px 24px rgba(0,0,0,0.35); }
+  50%       { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.45); }
+}
+
+.badge-float {
+  animation: badge-float 4s ease-in-out infinite;
+}
+
+/* ── Tap ripple for CTA buttons ── */
+@keyframes tap-ripple {
+  0%   { transform: scale(0); opacity: 0.4; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.15);
+  border-radius: inherit;
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn-ripple:active::before {
+  animation: tap-ripple 0.45s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}
+
+/* ── Scroll-connected progress bar at top ── */
+@keyframes scroll-progress {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ── Stagger reveal for stats grid on small screens ── */
+@keyframes stat-pop {
+  0%   { opacity: 0; transform: scale(0.88) translateY(10px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ── Marquee speed — faster on mobile for better energy ── */
+@media (max-width: 640px) {
+  .animate-marquee {
+    animation-duration: 20s;
+  }
+  .animate-marquee-reverse {
+    animation-duration: 25s;
+  }
+}
+
+/* ── Safe-area inset support for notch devices ── */
+main {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ── JackBot panel slide-in ── */
+@keyframes bot-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-bot-in {
+  animation: bot-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Smooth touch scrolling ── */
+html {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Momentum scroll on scroll containers ── */
+.overflow-x-auto,
+.overflow-y-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Remove text decoration tap highlight on mobile ── */
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ================================================================
+   REDUCED MOTION — always last to win specificity
+   ================================================================ */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+  .animate-kenburns,
+  .animate-marquee,
+  .animate-marquee-reverse,
+  .animate-pulse-glow,
+  .animate-float-slow,
+  .animate-border-pulse,
+  .hero-animate-1,
+  .hero-animate-2,
+  .hero-animate-3,
+  .hero-animate-4,
+  .hero-animate-5,
+  .mobile-menu-item,
+  .badge-float,
+  .btn-ripple::before,
+  .animate-bot-in {
+    animation: none !important;
+  }
 }
+

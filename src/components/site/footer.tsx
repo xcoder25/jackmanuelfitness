@@ -4,56 +4,128 @@ const SOCIALS = [
   { href: "https://www.facebook.com/jackmanuelfitness", label: "Facebook" },
 ];
 
+const NAV_LINKS = [
+  { href: "#about", label: "About" },
+  { href: "#train", label: "Programs" },
+  { href: "#clients", label: "Clients" },
+  { href: "#testimonials", label: "Reviews" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#book", label: "Book" },
+];
+
 export function Footer() {
   return (
     <footer className="border-t border-border bg-surface">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:px-6 md:flex-row md:items-start md:justify-between">
-        <div>
-          <p className="font-display text-2xl tracking-wide text-fg">JACK MANUEL FITNESS</p>
-          <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted">
-            Jack Manuel Fitness Limited. Personal training, group sessions, and brand work from
-            Lagos.
-          </p>
-        </div>
-        <div className="flex flex-col gap-3 text-sm">
-          <a href="#train" className="text-muted hover:text-fg transition-colors duration-150">
-            Programs
-          </a>
-          <a href="#book" className="text-muted hover:text-fg transition-colors duration-150">
-            Book
-          </a>
-          <a
-            href="mailto:manueljack929@gmail.com"
-            className="text-muted hover:text-fg transition-colors duration-150"
-          >
-            manueljack929@gmail.com
-          </a>
+      {/* WhatsApp CTA strip */}
+      <div className="border-b border-border bg-elevated/60">
+        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+          <div>
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted">
+              Fastest way to reach us
+            </p>
+            <p className="mt-1 font-display text-2xl tracking-wide text-fg sm:text-3xl uppercase">
+              Message the desk on WhatsApp
+            </p>
+            <p className="mt-1 text-sm text-muted">
+              Bookings Lead: Prince John Francis · 0803 099 7843
+            </p>
+          </div>
           <a
             href="https://wa.me/2348030997843"
             target="_blank"
             rel="noreferrer"
-            className="text-muted hover:text-fg transition-colors duration-150"
+            className="inline-flex shrink-0 items-center gap-2.5 rounded-lg bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-900/30 transition-all duration-200 hover:bg-emerald-500 hover:shadow-emerald-900/50 active:scale-95"
           >
-            WhatsApp
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-60" />
+              <span className="relative inline-flex size-2 rounded-full bg-white" />
+            </span>
+            Open WhatsApp
           </a>
         </div>
-        <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-          {SOCIALS.map((s) => (
-            <a
-              key={s.href}
-              href={s.href}
-              target="_blank"
-              rel="noreferrer"
-              className="text-muted hover:text-fg transition-colors duration-150"
-            >
-              {s.label}
-            </a>
-          ))}
+      </div>
+
+      {/* Main footer grid */}
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3 md:gap-8">
+        {/* Brand */}
+        <div className="md:col-span-1">
+          <p className="font-display text-2xl tracking-wide text-fg">JACK MANUEL FITNESS</p>
+          <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted">
+            Jack Manuel Fitness Limited. Raw power coaching, group sessions, and brand work from
+            Lagos, Nigeria.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
+            {SOCIALS.map((s) => (
+              <a
+                key={s.href}
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm text-muted transition-colors duration-150 hover:text-fg"
+              >
+                {s.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Site links */}
+        <div>
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted">
+            Navigate
+          </p>
+          <ul className="flex flex-col gap-2.5">
+            {NAV_LINKS.map((l) => (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  className="text-sm text-muted transition-colors duration-150 hover:text-fg"
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div>
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted">
+            Contact
+          </p>
+          <ul className="flex flex-col gap-3 text-sm">
+            <li>
+              <p className="text-subtle text-xs uppercase tracking-wider mb-0.5">Bookings</p>
+              <a
+                href="tel:+2348030997843"
+                className="text-muted transition-colors hover:text-fg"
+              >
+                0803 099 7843
+              </a>
+            </li>
+            <li>
+              <p className="text-subtle text-xs uppercase tracking-wider mb-0.5">Email</p>
+              <a
+                href="mailto:manueljack929@gmail.com"
+                className="text-muted transition-colors hover:text-fg break-all"
+              >
+                manueljack929@gmail.com
+              </a>
+            </li>
+            <li>
+              <p className="text-subtle text-xs uppercase tracking-wider mb-0.5">Location</p>
+              <span className="text-muted">Lagos, Nigeria</span>
+            </li>
+          </ul>
         </div>
       </div>
-      <p className="border-t border-border px-4 py-4 text-center text-xs text-subtle">
-        © {new Date().getFullYear()} Jack Manuel Fitness Limited. All rights reserved.
-      </p>
+
+      {/* Bottom bar */}
+      <div className="border-t border-border px-4 py-4 sm:px-6">
+        <p className="text-center text-xs text-subtle">
+          © {new Date().getFullYear()} Jack Manuel Fitness Limited. All rights reserved.
+        </p>
+      </div>
     </footer>
   );
 }

@@ -10,13 +10,39 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: APP_NAME },
+      { title: "Jack Manuel Fitness — Raw Power Coaching Lagos" },
       {
         name: "description",
         content:
-          "Jack Manuel Fitness Limited — 1:1 coaching, group training, and brand bookings in Lagos. Raw power. Real strength. Book a session.",
+          "Jack Manuel Fitness Limited — 1:1 coaching, group training, and brand bookings in Lagos, Nigeria. Raw power. Real strength. Book a session with Coach Okoro Ogbonna.",
       },
       { name: "theme-color", content: "#0a0a0b" },
+      { name: "color-scheme", content: "dark" },
+      { name: "robots", content: "index, follow" },
+      { name: "author", content: "Okoro Ogbonna (Jack Manuel)" },
+      { name: "keywords", content: "personal trainer Lagos, strength coach Nigeria, 1:1 coaching Lagos, Jack Manuel Fitness, gym Lagos, Hustle Gang fitness" },
+      /* Open Graph */
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Jack Manuel Fitness" },
+      { property: "og:title", content: "Jack Manuel Fitness — Raw Power Coaching Lagos" },
+      {
+        property: "og:description",
+        content:
+          "1:1 coaching, group sessions & brand bookings in Lagos. Strength that is real — not a filter. Book Coach Jack Manuel today.",
+      },
+      { property: "og:image", content: "/images/jack-coach.jpg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Jack Manuel — Head Coach & Founder, Lagos Nigeria" },
+      /* Twitter / X card */
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Jack Manuel Fitness — Raw Power Coaching Lagos" },
+      {
+        name: "twitter:description",
+        content: "1:1 coaching, group sessions & brand bookings in Lagos. Strength that is real. Book Coach Jack Manuel today.",
+      },
+      { name: "twitter:image", content: "/images/jack-coach.jpg" },
+      { name: "twitter:image:alt", content: "Jack Manuel — Head Coach & Founder, Lagos Nigeria" },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },

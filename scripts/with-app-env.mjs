@@ -111,7 +111,13 @@ function main(argv) {
     process.exit(2);
   }
   const env = mergeAppEnv(readAppEnv(projectRoot()), process.env);
-  const child = spawn(command, args, { stdio: "inherit", env });
+  let execCmd = command;
+  let execArgs = args;
+  if (command === "vite") {
+    execCmd = process.execPath;
+    execArgs = [join(projectRoot(), "node_modules", "vite", "bin", "vite.js"), ...args];
+  }
+  const child = spawn(execCmd, execArgs, { stdio: "inherit", env });
   // The dev server is long-running and is stopped by signalling this wrapper.
   for (const signal of ["SIGINT", "SIGTERM", "SIGHUP"]) {
     process.on(signal, () => child.kill(signal));
