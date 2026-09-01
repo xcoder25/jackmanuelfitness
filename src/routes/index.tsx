@@ -22,6 +22,7 @@ import { Footer } from "@/components/site/footer";
 import { BookForm } from "@/components/site/book-form";
 import { JackBot } from "@/components/site/jack-bot";
 import { HeroSlideshow } from "@/components/site/hero-slideshow";
+import { MobileStickyCta } from "@/components/site/mobile-sticky-cta";
 import { Button } from "@/components/ui/button";
 import { Reveal, AnimatedCounter } from "@/components/ui/reveal";
 
@@ -279,6 +280,7 @@ function Home() {
   return (
     <div id="top" className="min-h-screen bg-bg text-fg selection:bg-fg selection:text-bg">
       <JackBot />
+      <MobileStickyCta />
       <ScrollProgress />
       <Header />
       <main>
@@ -304,7 +306,15 @@ function Home() {
             {/* Giant Typographic Headline */}
             <div className="hero-animate-2">
               <h1 className="mt-5 max-w-4xl font-display text-[clamp(2.6rem,11vw,7.5rem)] leading-[0.88] tracking-wide text-fg drop-shadow-sm uppercase">
-                My strength is my superpower
+                {"My strength is my superpower".split(" ").map((word, i) => (
+                  <span
+                    key={`${word}-${i}`}
+                    className="hero-word inline-block pr-[0.18em]"
+                    style={{ animationDelay: `${180 + i * 90}ms` }}
+                  >
+                    {word}
+                  </span>
+                ))}
               </h1>
             </div>
 
@@ -676,15 +686,15 @@ function Home() {
                 <Reveal direction="up" delay={200}>
                   <figure className="group relative overflow-hidden rounded-xl border border-border bg-surface">
                     <img
-                      src="/images/street-iron.jpg"
-                      alt="Raw iron training in the streets of Lagos"
+                      src="/images/squat-rack.jpg"
+                      alt="Loaded squat rack on the gym floor"
                       loading="lazy"
                       decoding="async"
                       className="h-24 w-full object-cover sm:h-32 md:h-24 lg:h-28 transition-transform duration-700 ease-out group-hover:scale-105 filter brightness-95"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-bg/90 via-transparent to-transparent opacity-80" />
                     <div className="absolute bottom-2 left-2 text-[9px] sm:text-[10px] uppercase tracking-wider text-muted font-medium">
-                      Street Iron
+                      The rack
                     </div>
                   </figure>
                 </Reveal>

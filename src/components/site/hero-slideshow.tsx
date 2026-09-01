@@ -18,7 +18,7 @@ export function HeroSlideshow() {
         <img
           src="/images/hero-gym.jpg"
           alt="Empty industrial gym, stacked iron plates and a barbell under hard light"
-          className="h-full w-full object-cover object-center filter brightness-95 contrast-105"
+          className="h-full w-full object-cover object-center filter brightness-95 contrast-105 kenburns-mobile"
         />
       </div>
 
@@ -35,7 +35,7 @@ export function HeroSlideshow() {
         <img
           src="/images/jack2.jpg"
           alt="Coach Okoro Ogbonna (Jack Manuel) The Power Engine"
-          className="h-full w-full object-cover object-top md:object-center filter brightness-95 contrast-105"
+          className="h-full w-full object-cover object-top md:object-center filter brightness-95 contrast-105 kenburns-mobile"
         />
       </div>
 
@@ -52,7 +52,7 @@ export function HeroSlideshow() {
         <img
           src="/images/jack3.jpg"
           alt="Coach Jack Manuel raw strength workout on chest press machine"
-          className="h-full w-full object-cover object-center filter brightness-95 contrast-105"
+          className="h-full w-full object-cover object-center filter brightness-95 contrast-105 kenburns-mobile"
         />
       </div>
 

@@ -338,10 +338,10 @@ export function JackBot() {
         aria-label="Chat with Jack"
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "fixed bottom-6 right-5 z-[80] flex size-14 items-center justify-center rounded-full shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 sm:bottom-8 sm:right-7 overflow-visible",
+          "fixed bottom-5 right-4 z-[80] flex size-14 items-center justify-center rounded-full shadow-xl transition-all duration-300 hover:scale-110 active:scale-[0.96] sm:bottom-8 sm:right-7 overflow-visible animate-fab-in",
           open
             ? "bg-fg text-bg"
-            : "bg-bg border-2 border-border text-fg hover:border-fg/40",
+            : "bg-bg border-2 border-border text-fg hover:border-fg/40 fab-pulse",
         )}
       >
         {open ? (
@@ -396,7 +396,7 @@ export function JackBot() {
               <div key={msg.id} className={cn("flex flex-col gap-1.5", msg.from === "user" ? "items-end" : "items-start")}>
                 <div
                   className={cn(
-                    "max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed whitespace-pre-line",
+                    "max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed whitespace-pre-line msg-pop",
                     msg.from === "user"
                       ? "rounded-br-sm bg-fg text-bg"
                       : "rounded-bl-sm border border-border bg-elevated text-fg",

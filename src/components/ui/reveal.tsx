@@ -4,9 +4,16 @@ import { cn } from "@/lib/cn";
 interface RevealProps {
   children: ReactNode;
   className?: string;
-  delay?: number; // in ms
+  delay?: number;
   direction?: "up" | "down" | "left" | "right" | "none";
-  duration?: number; // in ms
+  duration?: number;
+}
+
+function prefersReducedMotion() {
+  return (
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
 }
 
 export function Reveal({
@@ -23,7 +30,7 @@ export function Reveal({
     const el = ref.current;
     if (!el) return;
 
-    if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
+    if (prefersReducedMotion() || !("IntersectionObserver" in window)) {
       setRevealed(true);
       return;
     }
@@ -35,8 +42,7 @@ export function Reveal({
           observer.unobserve(el);
         }
       },
-      // tighter margin so mobile elements reveal as user scrolls naturally
-      { threshold: 0.05, rootMargin: "40px 0px" },
+      { threshold: 0.08, rootMargin: "0px 0px -8% 0px" },
     );
 
     observer.observe(el);
@@ -45,23 +51,25 @@ export function Reveal({
 
   const hiddenCls =
     direction === "left"
-      ? "opacity-0 -translate-x-5"
+      ? "opacity-0 -translate-x-8 blur-[8px]"
       : direction === "right"
-        ? "opacity-0 translate-x-5"
+        ? "opacity-0 translate-x-8 blur-[8px]"
         : direction === "down"
-          ? "opacity-0 -translate-y-5"
-          : "opacity-0 translate-y-6";
+          ? "opacity-0 -translate-y-6 blur-[8px]"
+          : direction === "none"
+            ? "opacity-0 blur-[8px]"
+            : "opacity-0 translate-y-10 blur-[8px]";
 
   return (
     <div
       ref={ref}
       style={{
-        transitionDelay: `${delay}ms`,
+        transitionDelay: revealed ? `${delay}ms` : "0ms",
         transitionDuration: `${duration}ms`,
       }}
       className={cn(
-        "transition-all ease-out transform-gpu will-change-transform",
-        revealed ? "opacity-100 translate-x-0 translate-y-0" : hiddenCls,
+        "transform-gpu will-change-[opacity,transform,filter] transition-[opacity,transform,filter] ease-[cubic-bezier(0.16,1,0.3,1)]",
+        revealed ? "opacity-100 translate-x-0 translate-y-0 blur-0" : hiddenCls,
         className,
       )}
     >
@@ -93,7 +101,7 @@ export function AnimatedCounter({
     const el = ref.current;
     if (!el) return;
 
-    if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
+    if (prefersReducedMotion() || !("IntersectionObserver" in window)) {
       setCount(end);
       return;
     }

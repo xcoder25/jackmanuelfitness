@@ -426,6 +426,8 @@
 .mobile-menu-item:nth-child(3) { animation-delay: 0.12s; }
 .mobile-menu-item:nth-child(4) { animation-delay: 0.16s; }
 .mobile-menu-item:nth-child(5) { animation-delay: 0.20s; }
+.mobile-menu-item:nth-child(6) { animation-delay: 0.24s; }
+.mobile-menu-item:nth-child(7) { animation-delay: 0.28s; }
 
 /* ── Floating badge pulse for coach image ── */
 @keyframes badge-float {
@@ -522,6 +524,93 @@ a, button {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* ── Hero word stagger ── */
+@keyframes hero-word-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.7em, 0) rotateX(14deg);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotateX(0deg);
+    filter: blur(0);
+  }
+}
+
+.hero-word {
+  animation: hero-word-in 0.72s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transform-origin: bottom;
+  backface-visibility: hidden;
+}
+
+/* ── Mobile ken burns on hero photos ── */
+@keyframes kenburns-mobile {
+  0% { transform: scale(1.04) translate3d(0, 0, 0); }
+  100% { transform: scale(1.12) translate3d(-1.5%, -1%, 0); }
+}
+
+@media (max-width: 768px) {
+  .kenburns-mobile {
+    animation: kenburns-mobile 14s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+}
+
+/* ── FAB entrance + idle ring ── */
+@keyframes fab-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0) scale(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.animate-fab-in {
+  animation: fab-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+@keyframes fab-ring {
+  0% { box-shadow: 0 0 0 0 rgba(242, 240, 235, 0.35); }
+  70% { box-shadow: 0 0 0 12px rgba(242, 240, 235, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(242, 240, 235, 0); }
+}
+
+.fab-pulse {
+  animation: fab-ring 2.4s ease-out 1.2s 3;
+}
+
+/* ── Chat message pop ── */
+@keyframes msg-pop {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0) scale(0.96);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.msg-pop {
+  animation: msg-pop 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Arrow bounce for scroll cue ── */
+@keyframes scroll-nudge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+.hero-animate-5 .size-4 {
+  animation: scroll-nudge 1.6s ease-in-out infinite;
+}
+
 /* ================================================================
    REDUCED MOTION — always last to win specificity
    ================================================================ */
@@ -543,7 +632,13 @@ a, button {
   .mobile-menu-item,
   .badge-float,
   .btn-ripple::before,
-  .animate-bot-in {
+  .animate-bot-in,
+  .hero-word,
+  .kenburns-mobile,
+  .animate-fab-in,
+  .fab-pulse,
+  .msg-pop,
+  .hero-animate-5 .size-4 {
     animation: none !important;
   }
 }
